@@ -12,6 +12,7 @@ const onReset = () =>{
     setCounter( initialValue )
 }
 const onSubtract = () =>{
+  if( counter === 0 ) return;
 setCounter( counter -1 )
 }
   
