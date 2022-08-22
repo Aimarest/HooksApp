@@ -28,10 +28,10 @@ export const MultipleCustomHooks = () => {
                 )
         }
 
-       <button onClick={ onAdd } className="btn btn-primary">
+       <button onClick={ onAdd } className="btn btn-primary" disabled={ isLoading }>
         Next quote
        </button>
-       <button onClick={ onSubtract } className="btn btn-primary">
+       <button onClick={ onSubtract } className="btn btn-primary" disabled={ isLoading } >
         Previous quote
        </button>
     </>
