@@ -1,11 +1,12 @@
 import { useFetch } from "../Hooks/useFetch"
-
+import { useCounter } from "../Hooks/useCounter";
 
 export const MultipleCustomHooks = () => {
 
-
-    const { data, isLoading, hasError } = useFetch(' https://www.breakingbadapi.com/api/quotes/1 ')
+    const { onAdd, onSubtract, counter } = useCounter();
+    const { data, isLoading, hasError } = useFetch(` https://www.breakingbadapi.com/api/quotes/${ counter } `)
     const { author, quote } = !!data && data[0];  // Esto lo que hace es que coge la posición 0 del array data si data no es nulo.
+   
 
   return (
     <>
@@ -27,9 +28,12 @@ export const MultipleCustomHooks = () => {
                 )
         }
 
-       
-
-   
+       <button onClick={ onAdd } className="btn btn-primary">
+        Next quote
+       </button>
+       <button onClick={ onSubtract } className="btn btn-primary">
+        Previous quote
+       </button>
     </>
   )
 }
