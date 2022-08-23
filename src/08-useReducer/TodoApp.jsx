@@ -26,7 +26,11 @@ const handleDelete = (currentItem) =>{
 }
 
 const handleAddTodo = ( newTodo ) => {
- console.log(newTodo)
+ const action = {
+    type: '[TODO] Add Todo',
+    payload: newTodo
+ }
+ dispatchTodo( action )
 
 }
     return (
