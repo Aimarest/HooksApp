@@ -1,5 +1,5 @@
 
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, Link } from 'react-router-dom'
 import { HomePage, LoginPage, AboutPage } from './';
 
 export const MainApp = () => {
@@ -11,8 +11,12 @@ export const MainApp = () => {
  
     <>
       <h1>MainApp</h1>
-      <hr></hr> 
+      <Link  to="/">Home</Link>
+      <Link to="/about">About</Link>
+      <Link  to="/login">Login</Link>
 
+      <hr></hr> 
+     
       <Routes>
         <Route path = "/" element = { <HomePage/> }/>
         <Route path = "login" element = { <LoginPage/> }/>
