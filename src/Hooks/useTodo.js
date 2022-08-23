@@ -15,48 +15,51 @@ const initialState = [
 ]
 
 const init = () => {
-    return JSON.parse( localStorage.getItem('todos')) || initialState;
+    return JSON.parse(localStorage.getItem('todos')) || initialState;
 }
 
-export const useTodo = ( initialState=[]) => {
+export const useTodo = (initialState = []) => {
 
 
-    const [ todos, dispatchTodo] = useReducer( todoReducer, initialState, init )
+    const [todos, dispatchTodo] = useReducer(todoReducer, initialState, init)
 
 
     useEffect(() => {
-       localStorage.setItem('todos', JSON.stringify( todos ) || [] )
-    }, [ todos ]);
-    
-    const handleDelete = (id) =>{
-    
-    dispatchTodo({
-        type: '[TODO] Remove Todo',
-        payload:id,
-    })
-    }
-    
-    const handleAddTodo = ( newTodo ) => {
-     const action = {
-        type: '[TODO] Add Todo',
-        payload: newTodo
-     }
-     dispatchTodo( action )
-    
-    }
-    const handleToggleTodo = (id) => {
-    dispatchTodo({
-        type:  '[TODO] Toggle Todo',
-        payload:id,
-    })
+        localStorage.setItem('todos', JSON.stringify(todos) || [])
+    }, [todos]);
+
+    const handleDelete = (id) => {
+
+        dispatchTodo({
+            type: '[TODO] Remove Todo',
+            payload: id,
+        })
     }
 
+    const handleAddTodo = (newTodo) => {
+        const action = {
+            type: '[TODO] Add Todo',
+            payload: newTodo
+        }
+        dispatchTodo(action)
+
+    }
+    const handleToggleTodo = (id) => {
+        dispatchTodo({
+            type: '[TODO] Toggle Todo',
+            payload: id,
+        })
+    }
+     const todosCount = todos.length;
+     const pendingTodosCount =  todos.filter(todo => !todo.done).length;
 return {
     ...initialState,
     handleDelete,
     handleAddTodo,
     handleToggleTodo,
     todos,
+    todosCount,
+    pendingTodosCount,
 }
 
 }

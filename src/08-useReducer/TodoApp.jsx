@@ -8,13 +8,13 @@ import { useTodo } from '../Hooks';
 
 export const TodoApp = () => {
 
-    const { todos, handleDelete, handleAddTodo, handleToggleTodo } = useTodo();
+    const { todos, handleDelete, handleAddTodo, handleToggleTodo, todosCount, pendingTodosCount } = useTodo();
 
 
     return (
         <>
 
-            <h1>TodoApp: 10,<small>pendientes: 2</small> </h1>
+            <h1>TodoApp: {todosCount},<small>pendientes: {pendingTodosCount}</small> </h1>
             <hr />
 
             <div className="row">
