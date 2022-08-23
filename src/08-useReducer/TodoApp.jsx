@@ -31,7 +31,7 @@ useEffect(() => {
 }, [ todos ]);
 
 const handleDelete = (id) =>{
-    
+
 dispatchTodo({
     type: '[TODO] Remove Todo',
     payload:id,
@@ -46,6 +46,12 @@ const handleAddTodo = ( newTodo ) => {
  dispatchTodo( action )
 
 }
+const handleToggleTodo = (id) => {
+dispatchTodo({
+    type:  '[TODO] Toggle Todo',
+    payload:id,
+})
+}
     return (
         <>
 
@@ -54,12 +60,18 @@ const handleAddTodo = ( newTodo ) => {
 
             <div className="row">
                 <div className="col-7">
-                    <TodoList todos={ todos } handleDelete={ handleDelete } />
+                    <TodoList 
+                    todos={ todos } 
+                    handleDelete={ handleDelete }
+                    onToggleTodo={ handleToggleTodo } />
                 </div>
                 <div className="col-5">
                     <h4>Agregar TODO</h4>
                     <hr/>
-           <TodoAdd handleAddTodo={ handleAddTodo }/>
+           <TodoAdd
+           handleAddTodo={ handleAddTodo }
+
+           />
                 </div>
             </div>
           

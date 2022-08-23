@@ -1,7 +1,7 @@
 import { TodoItem } from "./TodoItem";
 
 
-export const TodoList = ( { todos, handleDelete  } ) => {
+export const TodoList = ( { todos, handleDelete, onToggleTodo  } ) => {
 
 
 
@@ -10,7 +10,7 @@ export const TodoList = ( { todos, handleDelete  } ) => {
     {
         todos.map(todo => (
            
-           <TodoItem  key={ todo.id } todo={ todo } handleDelete={ handleDelete } />
+           <TodoItem  key={ todo.id } todo={ todo } handleDelete={ handleDelete } onToggleTodo={ onToggleTodo } />
         ))
     }
 
