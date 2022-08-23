@@ -21,6 +21,7 @@ export const TodoAdd = ({ handleAddTodo }) => {
                 done: false,
             }
             handleAddTodo(newTodo)
+            setValue('')
         }
         
         else {
