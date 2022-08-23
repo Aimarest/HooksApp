@@ -1,6 +1,6 @@
 
 
-export const TodoItem = ( { todo, handleDelete }) => {
+export const TodoItem = ( { todo, handleDelete , onToggleTodo}) => {
 
   
 
@@ -8,12 +8,12 @@ export const TodoItem = ( { todo, handleDelete }) => {
   return (
     <li className="list-group-item d-flex justify-content-between">
       <span 
-      className="align-self-center"
+      className={`align-self-center ${ todo.done ? 'text-decoration-line-through': '' }`}
       onClick={ () => onToggleTodo( todo.id )}
       >
       {todo.todo}
       </span>
-      <button key={todo.id + 1} onClick={() => handleDelete(todo.id)} className="btn btn-danger"
+      <button  onClick={() => handleDelete(todo.id)} className="btn btn-danger"
       >
       Borrar
       </button>
