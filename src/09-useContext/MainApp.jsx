@@ -1,6 +1,6 @@
 
-import { Navigate, Route, Routes, Link } from 'react-router-dom'
-import { HomePage, LoginPage, AboutPage } from './';
+import { Navigate, Route, Routes} from 'react-router-dom'
+import { HomePage, LoginPage, AboutPage, NavBar } from './';
 
 export const MainApp = () => {
 
@@ -11,10 +11,9 @@ export const MainApp = () => {
  
     <>
       <h1>MainApp</h1>
-      <Link  to="/">Home</Link>
-      <Link to="/about">About</Link>
-      <Link  to="/login">Login</Link>
-
+    
+      <NavBar />
+      
       <hr></hr> 
      
       <Routes>
