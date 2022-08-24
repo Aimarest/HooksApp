@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react';
+import { renderHook, act } from '@testing-library/react';
 import { useCounter } from '../../src/Hooks/useCounter';
 
 
@@ -20,4 +20,18 @@ describe('Pruebas sobre el hook useCounter', () => {
         const { counter } = result.current;
         expect( counter ).toBe( 100 );
       })
- })
+
+      test('Debe de incrementar el contador', () =>{
+
+        const { result } = renderHook( ()=> useCounter());
+        const { onAdd } = result.current;
+        // HAY QUE UTILIZAR LA FUNCION ACT PARA PODER UTILIZAR UNA FUNCION QUE CAMBIA EL VALOR DE UNA VARIABLE DE ESTADO DENTRO DEL TEST
+        act( ()=>{
+            onAdd()
+        });
+
+        //expect( counter ).toBe(2); ESTO NO FUNCIONA PORQUE SE COGE EL VALOR INICIAL DEL COUNTER, NO EL ACTUAL,POR ELLO HAY QUE HACERLO ASÍ:
+        expect( result.current.counter ).toBe(2);
+      
+        })
+    })
