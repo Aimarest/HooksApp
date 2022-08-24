@@ -5,15 +5,15 @@ export const useCounter = (initialValue = 1) => {
   const [counter, setCounter] = useState(initialValue);
 
   
-  const onAdd = () =>{
-    setCounter( counter +1)
+  const onAdd = ( num ) =>{
+    setCounter( ( current ) => current + num )
 }
 const onReset = () =>{
     setCounter( initialValue )
 }
-const onSubtract = () =>{
+const onSubtract = ( num ) =>{
   if( counter === 1 ) return;
-setCounter( counter -1 )
+setCounter(( current ) =>  current - num )
 }
   
   

@@ -27,11 +27,39 @@ describe('Pruebas sobre el hook useCounter', () => {
         const { onAdd } = result.current;
         // HAY QUE UTILIZAR LA FUNCION ACT PARA PODER UTILIZAR UNA FUNCION QUE CAMBIA EL VALOR DE UNA VARIABLE DE ESTADO DENTRO DEL TEST
         act( ()=>{
-            onAdd()
+            onAdd(1)
         });
 
         //expect( counter ).toBe(2); ESTO NO FUNCIONA PORQUE SE COGE EL VALOR INICIAL DEL COUNTER, NO EL ACTUAL,POR ELLO HAY QUE HACERLO ASÍ:
         expect( result.current.counter ).toBe(2);
       
         })
+        test('Debe de decrementar el contador', () =>{
+
+            const { result } = renderHook( ()=> useCounter(100));
+            const { onSubtract } = result.current;
+           
+            act( ()=>{
+                onSubtract(1)
+            });
+    
+           
+            expect( result.current.counter ).toBe(99);
+          
+            })
+            test('Debe de resetear el contador', () =>{
+
+                const { result } = renderHook( ()=> useCounter(100));
+                const { onReset, onAdd } = result.current;
+                
+                act( ()=>{
+                    onAdd(2)
+                    onReset()
+                });
+        
+             
+                expect( result.current.counter ).toBe(100);
+              
+                })
+
     })
