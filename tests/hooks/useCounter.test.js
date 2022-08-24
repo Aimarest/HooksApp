@@ -14,4 +14,10 @@ describe('Pruebas sobre el hook useCounter', () => {
         expect( onReset ).toEqual( expect.any( Function ));
         expect( onSubtract ).toEqual( expect.any( Function ));
      })
+     test('debe de generar el counter con el valor de 100', () => { 
+
+        const { result } = renderHook( () => useCounter(100) )
+        const { counter } = result.current;
+        expect( counter ).toBe( 100 );
+      })
  })
