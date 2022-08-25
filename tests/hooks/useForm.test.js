@@ -38,11 +38,27 @@ test('Debe regresar los valores por defecto', () => {
     act(()=>{
         onInputChange({ target:{ name:'name', value: newValue} })
     })
-    console.log( result.current.name)
+   
     expect( result.current.name ).toBe(newValue)
     expect( result.current.formState.name ).toBe(newValue)
  })
 
+ test('Debe de realizar el reset del formulario', () => { 
+
+   
+    const { result } = renderHook( ()=>  useForm( initialForm ) );
+    const {  onInputChange, onResetForm } = result.current;
+
+   const newValue = 'MariCarmen';
+
+    act(()=>{
+        onInputChange({ target:{ name:'name', value: newValue} })
+        onResetForm()
+    })
+   
+    expect( result.current.name ).toBe( initialForm.name )
+    expect( result.current.formState.name ).toBe( initialForm.name )
+ })
 });
 
 
