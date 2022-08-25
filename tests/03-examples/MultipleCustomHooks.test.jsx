@@ -27,8 +27,8 @@ describe('Pruebas en el componente MultipleCustomHooks', () => {
 
        render( <MultipleCustomHooks /> );
 
-       expect(screen.getByText('Loading...'));
-       expect(screen.getByText('BreakingBad Quotes'));
+       expect(screen.getByText('Loading...')).toBeTruthy();
+       expect(screen.getByText('BreakingBad Quotes')).toBeTruthy();
 
        const button = screen.getByRole('button', {name:'Next quote'})
        expect(button.disabled).toBeTruthy();
@@ -43,8 +43,8 @@ describe('Pruebas en el componente MultipleCustomHooks', () => {
         })
         render( <MultipleCustomHooks/> );
 
-        expect(screen.getByText('Ana'));
-        expect(screen.getByText('Hoy es jueves'));
+        expect(screen.getByText('Ana')).toBeTruthy();
+        expect(screen.getByText('Hoy es jueves')).toBeTruthy();
         
         const button = screen.getByRole('button', { name:'Next quote'})
         expect(button.disabled).toBeFalsy();
