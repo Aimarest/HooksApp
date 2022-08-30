@@ -56,5 +56,7 @@ describe('Pruebas sobre el componente TodoReducer', () => {
         }
         const newState = todoReducer(initialState, action );
         expect(newState[0].done).toBeTruthy();
+        const newState2 = todoReducer(newState, action );
+        expect(newState2[0].done).toBeFalsy();
      })
 });
