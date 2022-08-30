@@ -10,6 +10,9 @@ const { user } = useContext( UserContext );
     <>
         <h1>HomePage <small>{`Buenos días ${ user ? user.name : '' }!!`}</small></h1>
         <hr/>
+        <pre aria-label="pre">
+          { JSON.stringify( user, null, 3 ) }
+        </pre>
     </>
   )
 }

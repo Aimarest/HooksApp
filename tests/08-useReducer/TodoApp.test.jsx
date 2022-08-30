@@ -24,6 +24,6 @@ describe('Pruebas sobre el componente TodoApp', () => {
         screen.debug()
         expect( screen. getByText('Todo #1') ).toBeTruthy();
         expect( screen. getByText('Todo #2') ).toBeTruthy();
-       expect( screen.getByRole('textbox') ).toBeTruthy();
+        expect( screen.getByRole('textbox') ).toBeTruthy();
      })
  })
