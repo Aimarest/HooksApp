@@ -32,6 +32,18 @@ describe('Pruebas sobre el componente TodoItem', () => {
 
         const spanElement = screen.getByLabelText('span');
         console.log(spanElement.className )
-        expect( spanElement.className ).toBe( "align-self-center ")
+        expect( spanElement.className ).toBe( "align-self-center ") //OJO!!!! TIENE UN ESPACIO, PORQUE EN EL TODOITEM TIENE UN ESPACIO AHÍ POR LA CLASE VARIABLE QUE PONEMOS DESPUES
+    })
+
+    test('Debe de mostrar el ToDo completado', () => { 
+
+        initialToDo.done = true; // Con esto simulamos que el ToDo ha sido completado, y por lo tanto debería estar tachado en el Dom
+
+        render(<TodoItem todo={ initialToDo } handleDelete={ MockHandleDelete } onToggleTodo={ MockOnToggleTodo } />)
+
+
+        const spanElement = screen.getByLabelText('span');
+        console.log(spanElement.className )
+        expect( spanElement.className ).toBe( "align-self-center text-decoration-line-through" ) 
     })
 });
