@@ -11,7 +11,7 @@ export const TodoItem = ( { todo, handleDelete , onToggleTodo}) => {
       className={`align-self-center ${ todo.done ? 'text-decoration-line-through': '' }`}
       onClick={ () => onToggleTodo( todo.id )}
       >
-      {todo.todo}
+      {todo.description}
       </span>
       <button  onClick={() => handleDelete(todo.id)} className="btn btn-danger"
       >

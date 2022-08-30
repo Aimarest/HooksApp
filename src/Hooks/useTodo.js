@@ -4,12 +4,12 @@ import { useReducer, useEffect } from "react";
 const initialState = [
     {
         id: new Date().getTime(),
-        todo: 'Recolectar la piedra del alma',
+        description: 'Recolectar la piedra del alma',
         done: false,
     },
     {
         id: new Date().getTime() * 3,
-        todo: 'Recolectar la piedra del poder',
+        description: 'Recolectar la piedra del poder',
         done: false,
     }
 ]
