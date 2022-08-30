@@ -4,7 +4,7 @@ import { UserContext } from "./context/UserContext";
 
 export const LoginPage = () => {
 
-const { user , setUser } = useContext( UserContext);
+const { user , setUser } = useContext( UserContext );
 
 const onLoginUser = () => {
 
@@ -15,7 +15,8 @@ const onLoginUser = () => {
    <>
     <h1>LoginPage</h1>
     <hr/>
-    <pre>
+    <pre
+    aria-label="pre">
       {JSON.stringify( user )}
     </pre>
     <button
