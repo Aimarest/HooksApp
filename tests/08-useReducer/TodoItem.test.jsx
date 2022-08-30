@@ -16,9 +16,22 @@ describe('Pruebas sobre el componente TodoItem', () => {
     test('Debe de mostrar un Todo', () => {
 
         render(<TodoItem todo={initialToDo} handleDelete={ MockHandleDelete } onToggleTodo={ MockOnToggleTodo } />);
-        screen.debug();
+      
         expect(screen.getByText('Prueba TodoItem')).toBeTruthy();
         expect(screen.getByRole('button')).toBeTruthy()
 
+    })
+
+    test('Debe de mostrar el ToDo pendiente de completar', () => { 
+
+        render(<TodoItem todo={initialToDo} handleDelete={ MockHandleDelete } onToggleTodo={ MockOnToggleTodo } />)
+
+        const liElement = screen.getByRole('listitem');
+        console.log(liElement);
+        expect( liElement.className ).toBe('list-group-item d-flex justify-content-between');
+
+        const spanElement = screen.getByLabelText('span');
+        console.log(spanElement.className )
+        expect( spanElement.className ).toBe( "align-self-center ")
     })
 });
