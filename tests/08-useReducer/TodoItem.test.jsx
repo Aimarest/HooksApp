@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { TodoItem } from '../../src/08-useReducer/TodoItem';
 
 describe('Pruebas sobre el componente TodoItem', () => {
@@ -47,4 +47,27 @@ describe('Pruebas sobre el componente TodoItem', () => {
         console.log(spanElement.className )
         expect( spanElement.className ).toBe( "align-self-center text-decoration-line-through" ) 
     })
+
+    test('El span debe llamar el ToggleToDo al hacer click en el botón ', () => { 
+
+        render(<TodoItem todo={ initialToDo } handleDelete={ MockHandleDelete } onToggleTodo={ MockOnToggleTodo } />)
+
+        const spanElement = screen.getByLabelText('span');
+
+        fireEvent.click( spanElement );
+
+        expect( MockOnToggleTodo ).toHaveBeenCalledWith( initialToDo.id );
+
+     })
+
+     test('El botón borrar debe llamar la función handleDelete', () => {
+
+        render(<TodoItem todo={ initialToDo } handleDelete={ MockHandleDelete } onToggleTodo={ MockOnToggleTodo } />);
+
+        const button = screen.getByRole('button');
+
+        fireEvent.click( button );
+
+        expect( MockHandleDelete ).toHaveBeenCalledWith( initialToDo.id );
+      })
 });
