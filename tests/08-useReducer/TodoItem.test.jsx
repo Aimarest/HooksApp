@@ -33,6 +33,7 @@ describe('Pruebas sobre el componente TodoItem', () => {
         const spanElement = screen.getByLabelText('span');
         console.log(spanElement.className )
         expect( spanElement.className ).toBe( "align-self-center ") //OJO!!!! TIENE UN ESPACIO, PORQUE EN EL TODOITEM TIENE UN ESPACIO AHÍ POR LA CLASE VARIABLE QUE PONEMOS DESPUES
+        expect( spanElement.className ).not.toContain( "text-decoration-line-through" ) // No debe tener esta clase porque la tarea no está completada, no debe estar tachado
     })
 
     test('Debe de mostrar el ToDo completado', () => { 
